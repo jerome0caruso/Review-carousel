@@ -57,8 +57,10 @@ h3 {
     color: cadetblue;
     margin-bottom: 0;
 }
-.photo {
-    background-color: rgb(0, 0, 0);
+.photo { 
+    background: transparent url('https://media.tenor.com/images/a742721ea2075bc3956a2ff62c9bfeef/tenor.gif');
+    background-repeat: no-repeat;
+    background-size: 170px 170px;
     border: 1px solid rgb(214, 214, 214);   
     display: inline-block;
     border-radius: 50%;
