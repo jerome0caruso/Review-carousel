@@ -1,0 +1,65 @@
+let peopleData = null;
+fetch("./people.json")
+    .then(res => res.json())
+    .then( async (data) => {
+        peopleData = await data; 
+        makeCard(data);
+        })
+    .catch(err => console.log(`${err} sorry there was an error!`))
+
+const leftArrow =  document.querySelector('.leftArrow');
+const rightArrow = document.querySelector('.rightArrow');
+let container = document.querySelector(".main");
+let card = document.createElement('div');
+
+leftArrow.addEventListener('click', () => {
+    removeCard();
+    console.log("going")
+    makeCard(peopleData, 'minus');
+});
+
+rightArrow.addEventListener('click', () => {
+    removeCard();
+    console.log("going")
+    makeCard(peopleData, 'plus')
+});
+
+let cardNumber = 0;
+
+function removeCard(cardNumber, card) {
+    container.replaceChild()
+}
+
+function makeCard(people, direction) {
+  
+    peopleData = people;
+    card.classList.add('card');
+
+    if(direction === 'minus' && cardNumber > 0) {
+        cardNumber--;
+    }
+    if(direction === 'plus' && cardNumber < people.length) {
+        cardNumber++;
+    }
+
+    const img = document.createElement("img");
+    img.classList.add('photo');
+    img.src = './pic1.jpg'
+
+    const h2 = document.createElement("h1");
+    const name = document.createTextNode(people[cardNumber].name);
+    h2.appendChild(name);
+
+    const h3 = document.createElement("h3");
+    const position = document.createTextNode(people[cardNumber].position);
+    h3.appendChild(position);
+
+    const p = document.createElement("p");
+    const paragraph = document.createTextNode(people[cardNumber].info);
+    p.appendChild(paragraph);
+
+    card.append(img, h2, h3, p);
+    
+    container.appendChild(card);
+}
+
